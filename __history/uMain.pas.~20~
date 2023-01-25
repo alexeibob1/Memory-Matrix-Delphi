@@ -1,0 +1,90 @@
+Unit uMain;
+
+Interface
+
+Uses
+    Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+    Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uPlayground;
+
+Type
+    TfrmMain = class(TForm)
+        btnStart: TButton;
+        tTimer: TTimer;
+    Procedure btnStartClick(Sender: TObject);
+    //Procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
+       //                     Shift: TShiftState; X, Y: Integer);
+
+    Private
+        { Private declarations }
+
+        Procedure CleanMainScreen();
+
+    Public
+        { Public declarations }
+    End;
+
+Var
+  frmMain: TfrmMain;
+
+Implementation
+
+{$R *.dfm}
+
+
+{Procedure TfrmMain.FormMouseDown(Sender: TObject; Button: TMouseButton;
+                                 Shift: TShiftState; X, Y: Integer);
+Var
+    I, J, N: Integer;
+    Left, Top, Width: Integer;
+    Cell: TCell;
+Begin
+    N := Field.GetSize();
+
+    If (Field <> Nil) then
+    Begin
+        For I := 0 to (N - 1) do
+        Begin
+            For J := 0 to (N - 1) do
+            Begin
+                Cell := Field.GetCell(I, J);
+                Cell.GetPosition(Left, Top, Width);
+                If (X >= Left) and (X <= Left + Width)
+                               and (Y >= Top) and (Y <= Top + Width) then
+                Begin
+                    Cell.SetColor(clGreen);
+                    Cell.DrawRect;
+                End;
+
+            End;
+        End;
+    End;
+End;     }
+
+Procedure TfrmMain.CleanMainScreen();
+Begin
+    //btnStart.Free();
+End;
+
+
+
+Procedure TfrmMain.btnStartClick(Sender: TObject);
+Var
+    //Cell: TCell;
+    frmPlayground: TfrmPlayground;
+Begin
+    frmMain.Destroy;
+    Try
+        frmPlayground := TfrmPlayground.Create(Self);
+        frmPlayground.ShowModal;
+    Finally
+        frmPlayground.Destroy;
+        frmMain := TfrmMain.Create(Self);
+    End;
+    CleanMainScreen();
+    //Field := TMatrix.Create(20);
+    //DrawPlayground(Field);
+End;
+
+
+
+End.

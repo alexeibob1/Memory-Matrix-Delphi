@@ -1,0 +1,96 @@
+Unit uMain;
+
+Interface
+
+Uses
+    Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+    Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uPlayground;
+
+Type
+    TfrmMain = class(TForm)
+        btnStart: TButton;
+    tTimer: TTimer;
+    Procedure btnStartClick(Sender: TObject);
+    procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    
+    Private
+        { Private declarations }
+        Field: TMatrix;
+        Procedure DrawMainScreen();
+        Procedure CleanMainScreen();
+
+    Public
+        { Public declarations }
+    End;
+
+Var
+  frmMain: TfrmMain;
+
+Implementation
+
+{$R *.dfm}
+
+//Uses
+    //uPlayground;
+
+Procedure TfrmMain.DrawMainScreen();
+Const
+    BTN_START_WIDTH = 233;
+    BTN_START_HEIGHT = 49;
+    BTN_START_TOP = 216;
+    BTN_START_LEFT = 208;
+Var
+    btnStart: TButton;
+Begin
+    btnStart := TButton.Create(Self);
+    With btnStart do
+    Begin
+        Parent := Self;
+        Caption := 'Начать игру';
+        Width := BTN_START_WIDTH;
+        Height := BTN_START_HEIGHT;
+        Top := BTN_START_TOP;
+        Left := BTN_START_LEFT;
+    End;
+End;
+
+
+
+Procedure TfrmMain.FormMouseDown(Sender: TObject; Button: TMouseButton;
+                                 Shift: TShiftState; X, Y: Integer);
+Var
+    I, J, N: Integer;
+Begin
+    N := Field.GetSize();
+    If (Field <> Nil) then
+    Begin
+        For I := 0 to (N - 1) do
+        Begin
+            For J := 0 to (N - 1) do
+            Begin
+
+            End;
+        End;
+    End;
+End;
+
+Procedure TfrmMain.CleanMainScreen();
+Begin
+    btnStart.Free();
+End;
+
+
+
+Procedure TfrmMain.btnStartClick(Sender: TObject);
+Var
+    Cell: TCell;
+Begin
+    CleanMainScreen();
+    Field := TMatrix.Create(3);
+    DrawPlayground(Field);
+End;
+
+
+
+End.

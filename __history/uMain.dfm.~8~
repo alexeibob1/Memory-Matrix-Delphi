@@ -1,0 +1,39 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'Memory Matrix - '#1090#1088#1077#1085#1072#1078#1105#1088' '#1087#1072#1084#1103#1090#1080
+  ClientHeight = 440
+  ClientWidth = 493
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  OnMouseDown = FormMouseDown
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnStart: TButton
+    Left = 128
+    Top = 96
+    Width = 233
+    Height = 49
+    Caption = #1053#1072#1095#1072#1090#1100' '#1080#1075#1088#1091
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = btnStartClick
+  end
+  object tTimer: TTimer
+    Left = 8
+    Top = 8
+  end
+end

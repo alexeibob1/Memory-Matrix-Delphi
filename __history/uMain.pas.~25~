@@ -1,0 +1,54 @@
+Unit uMain;
+
+Interface
+
+Uses
+    Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+    Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uPlayground;
+
+Type
+    TfrmMain = class(TForm)
+        btnStart: TButton;
+        tTimer: TTimer;
+        Procedure btnStartClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+
+    Private
+        { Private declarations }
+
+    Public
+        { Public declarations }
+    End;
+
+Var
+  frmMain: TfrmMain;
+
+Implementation
+
+{$R *.dfm}
+
+
+Procedure TfrmMain.btnStartClick(Sender: TObject);
+Var
+    frmPlayground: TfrmPlayground;
+Begin
+
+    Try
+        frmMain.Free;
+        frmPlayground := TfrmPlayground.Create(Nil);
+
+        frmPlayground.ShowModal;
+    Finally
+        frmPlayground.Free;
+        frmMain := TfrmMain.Create(Nil);
+
+    End;
+    frmMain.Show;
+End;
+
+Procedure TfrmMain.FormClose(Sender: TObject; Var Action: TCloseAction);
+Begin
+    Application.Terminate;
+End;
+
+End.

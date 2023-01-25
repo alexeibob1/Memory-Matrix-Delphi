@@ -1,0 +1,15 @@
+program MemoryMatrix;
+
+uses
+  Vcl.Forms,
+  uMain in 'uMain.pas' {frmMain},
+  uPlayground in 'uPlayground.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmMain, frmMain);
+  Application.Run;
+end.

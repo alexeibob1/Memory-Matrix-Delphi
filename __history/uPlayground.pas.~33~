@@ -1,0 +1,25 @@
+Unit uPlayground;
+
+Interface
+
+Uses
+    Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+    Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uField;
+
+Type
+    TfrmPlayground = class(TForm)
+    Private
+        { Private declarations }
+        Field: TMatrix;
+    Public
+        { Public declarations }
+    End;
+
+Var
+    frmPlayground: TfrmPlayground;
+
+Implementation
+
+{$R *.dfm}
+
+End.
